@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="date offset calculator" />
+
+    <title>DateCalc</title>
+    <link rel="manifest" href="/app.webmanifest" />
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <!-- this is the start of content -->
+    <h2 id="result">Date Calculator</h2>
+    <label
+      ><input
+        type="number"
+        id="offset"
+        class="block"
+        value="75"
+        style="width: 4em; border: 0"
+    /></label>
+    days from
+    <label><input type="date" id="date" class="block" /></label>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', event => {
+        main();
+      });
+
+      function main() {
+        const res = document.querySelector('#result');
+        const dt = document.querySelector('#date');
+        const offset = document.querySelector('#offset');
+        dt.valueAsDate = new Date();
+        updateResult();
+
+        dt.addEventListener('change', e => {
+          updateResult();
+        });
+
+        offset.addEventListener('change', e => {
+          updateResult();
+        });
+
+        register();
+
+        function updateResult() {
+          result.innerHTML = 'placeholder';
+          let d = new Date(dt.value);
+          let d2 = new Date(d.getTime() + 24 * 3600000 * offset.value);
+          let options = {
+            weekday: 'short',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          };
+
+          result.innerHTML = d2.toLocaleDateString('en-UK', options);
+        }
+      }
+      async function register() {
+        if ('serviceWorker' in navigator) {
+          try {
+            const registration = await navigator.serviceWorker.register(
+              'sw.js',
+            );
+          } catch (error) {
+            console.log('Error while registering: ' + error.message);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
