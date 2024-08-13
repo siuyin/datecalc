@@ -1,3 +1,29 @@
 {
-  "name": "date offset calculator"
+  "name": "date offset calculator",
+  "start_url": "./datecalc.html",
+  "display": "standalone",
+    "icons": [
+        {
+            "src": "randname/icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "randname/icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "randname/icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "randname/icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
 }
